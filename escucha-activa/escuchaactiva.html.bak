@@ -1,0 +1,333 @@
+﻿<!DOCTYPE html>
+
+	
+<head>
+	<title>Bienvenidos a Arag򬟏pen Data</title>
+
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta name="robots" content="index, follow" />
+  <meta name="description" content="Arag򬟏pen Data" />
+  <meta name="keywords" content="default, keywords, here" />
+  <meta name="author" content="Idearium Consultores SL" />
+<!--  <meta name="viewport"content="width=980" />-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+	<link rel="favourites icon" href="public/i/favicon.ico" />
+<!--  <link rel="stylesheet" href="/bootstrap.min.css" type="text/css" media="screen, projection" />-->
+  <link rel="stylesheet" href="./public/style.css" media="screen" type="text/css" />
+  
+  <link rel="stylesheet" href="./public/chosen.css" type="text/css" />
+  <link rel="stylesheet" href="./public/chosenImage.css" type="text/css" />
+  <script type="text/javascript"src="http://maps.google.com/maps/api/js?sensor=false&amp;language=es"></script>
+  <script type="text/javascript" src="./public/portalAOD_funcs.js"></script>
+  <script type="text/javascript" src="./public/jquery/jquery-1.9.1.js"></script>
+  <script type="text/javascript" src="./public/jquery/jquery-1.9.1.min.js"></script>
+  <script type="text/javascript" src="./public/jquery/bootstrap-paginator.min.js"></script>
+  <script type="text/javascript" src="./public/jquery/escuchaactiva.js"></script>
+  <script type="text/javascript" src="./public/jquery/bootstrap.min.js"></script>
+  <script type="text/javascript" src="./public/jquery/chosen.jquery.js"></script>
+ 
+  
+	<style>
+
+		#datawindow {width:982px;}
+		.anchoFila {height:30px;}
+		
+		select{padding:5px 10px 0;}
+		
+		
+		@media screen and (-webkit-min-device-pixel-ratio:0) {
+		  select {padding:0 10px 0;}
+		}
+  	 
+	    
+			.select1 {width:267px;height:30px;font-size: 10px;}
+	    .select11 {width:267px;height:30px;font-size: 10px;}
+  	  .select2 {width:250px;height:30px;font-size: 10px;}
+	    .select22 {width:215px;height:30px;font-size: 10px;float:left;border:1px solid #76a1b8;margin-bottom:0;text-indent: 0.01px;text-overflow: '';-webkit-appearance: none;-moz-appearance: none;background: url("./public/i/06-FLECHA-Pequena-Up.png") no-repeat 185px 10px;}
+  	  .select3 {width:100px;height:30px;font-size: 10px;}
+	    .select33 {width:215px;height:30px;font-size: 10px;float:left;border:1px solid #76a1b8;margin-bottom:0;text-indent: 0.01px;text-overflow: '';-webkit-appearance: none;-moz-appearance: none;background: url("./public/i/06-FLECHA-Pequena-Up.png") no-repeat 185px 10px;}
+  	  .etiqueta1 {width:153px;height:30px;float:left; line-height:30px; text-align:left}
+	  .etiqueta1 img {width:100%;}
+  	  .etiqueta2 {width:20px;height:26px;float:left; line-height:30px;}
+  	  .etiqueta3 {width:20px;height:26px;float:left; line-height:30px; }
+  	  .seccionSelect { width: 990px; height: auto;min-height: 720px; margin: auto; margin-bottom:0;}
+  	  .selectores {float:left; vertical-align:middle;margin-top:30px;}
+  	  .selectores1 {float:left; vertical-align:middle;width:430px;height:26px;}
+  	  .selectores2 {float:left; vertical-align:middle;width:275px;height:26px;}
+  	  .selectores3 {float:left; vertical-align:middle;width:130px;height:26px;}
+
+  	  .alignJust { text-align: justify;}
+			.sizeData  { font-size:12px; }
+			.separadorSelDataset { border-bottom: 1px solid #e5e5e3; clear: both;}
+			#dvLoading{background:#000 url('./public/i/cargando.gif') no-repeat center center;height:80px;width: 80px;position: fixed;z-index: 1000;left: 50%;top: 50%;margin: -25px 0 0 -25px important!;}
+			.centrar {margin: 0 auto;}
+			.margenImg {margin:10px;}
+			.centraTexto {text-align:center;}
+			.sinEspacios {letter-spacing:0;}
+			.sinEspaciosLineas {line-height:15px;}
+			.huecomasPeq { padding: 1px;}
+			.ImageBorder{border-width: 1px;border-color: #e5e5e3;}
+			.margenDcho{padding-right:10px;}
+			
+		#tablaDatos {padding:25px 0 0 0;}
+		#tablaDatos .colizq{width:60px; padding:5px 30px 0; vertical-align:top;float:left;}
+		#tablaDatos .colizq img{padding: 0 5px 0 0;}
+		#tablaDatos .colder{padding:0 120px 0 0; text-align:left; vertical-align:top;}
+		#tablaDatos .titulo{float:left; width:100%;}
+		#tablaDatos .colder span{color:#333; margin:5px 0 0 0; font-weight:normal;}
+		#tablaDatos .compartirrs{float:left; padding:0 0 0 10px; border-left:1px solid #ccc;}
+		#tablaDatos .compartirrs img {margin: 0 8px -3px 0;}
+		#tablaDatos .abrir{float:left; margin:0 10px 0 0;}
+		
+		#paginator {float:left;width:848px; margin:30px 0;}
+		#paginator .linkactivo {text-decoration:underline;}
+		#paginator ul {width:848px;}
+		#paginator ul li { float:left; border-left:1px solid #76a1b8; padding:0 5px;}
+		
+		.datos-terceros{width:134px; height:18px; float:left; margin:30px 0; background: url(datos-terceros-off.png)no-repeat;}
+		.datos-terceros:hover {background: url(datos-terceros-on.png)no-repeat;cursor:pointer;}
+		.pagprim {border-left:1px solid #4F7589;}
+		.pagult {border-right:1px solid #4F7589;}
+		
+		.separadorContenidoPaginamenu{position:absolute;left:0; width:100%;border-bottom:1px solid #76a1b8;clear: both; margin:-3px 0 0 0;}	
+		.separadorpaginas {height:2px; background:#76a1b8}	
+		
+			
+		.refrescar {float:right; margin: 0 6px 0 0;}	
+		.bordesocialdata {border-bottom: 1px solid #e5e5e5;}  
+		
+		#mapaDinamico{position:absolute;height: 430px;width: 982px;border: 1px solid #76a1b8;}
+		#mapaDinamico img { max-width:none; }
+		#miMapa {margin-top:30px;}
+		#infoventana { font-size:10px; text-align:left;}	
+	.selectDisabled{
+	-webkit-appearance: none;
+	-moz-appearance: none !important;
+	border: none;
+}
+
+  </style>
+</head>
+
+<body onLoad="cargadaPagina();">
+	
+<header>
+<div id="cabeceraRelacionados">
+	<ul>
+		<li><a href="http://www.aragon.es/Temas/Transparencia" title="Transparencia">TRANSPARENCIA</a></li>
+<li class="clear visible-xs tamCero"></li>
+		<li class="active"><a href="http://opendata.aragon.es" title="Open data">OPEN DATA</a><p class="clear visible-xs"></p></li>
+<li class="clear visible-xs tamCero"></li>
+		<li><a href="http://aragonparticipa.aragon.es" title="Participaci&oacute;n ciudadana">PARTICIPACI&Oacute;N CIUDADANA</a></li>
+	</ul>
+</div>
+<div id="cabecera">
+	<ul>
+		<li><a href="http://www.aragon.es" target="_blank"><img src="./public/i/logo_aragob.png" width="127" height="28" alt="Gobierno de Arag&oacute;n" title="Gobierno de Arag&oacute;n" /></a></li>
+	</ul>
+</div>
+
+
+
+<div id="banner">
+	<ul>
+		<li class="i_i bannerLogo">
+			<a href="/" title="ARAG&Oacute;N OPEN DATA"><img class="" src="./public/i/logo_aod.png" alt="ARAG&Oacute;N OPEN DATA" /></a>
+		</li>
+<li class="clear visible-xs tamCero"></li>
+		<li class="bannerBuscador">
+			<form id="cajaBusqBanner" action="/catalogo" method="get">
+				<label for="cajaDeBusqInput" class="oculto">Buscar conjuntos de datos</label>
+				<button class="btn-search d_d" type="submit">Buscar</button>
+				<input id="cajaDeBusqInput" type="text" name="q" value="" class="search anchoSearchBanner d_d"  />
+				<!--<input id="cajaBusqInput" type="text" name="q" value="" class="search anchoSearchBanner d_d" placeholder="ARAG&Oacute;N OPEN DATA BUSCA DATOS" />-->
+			</form>
+		</li>
+	</ul>
+</div>
+<div class="clear"></div>
+
+
+<div class="clear"></div>
+</header>
+
+<div id="navegacion" class="botones botonesSuperiorLista">
+  <nav>
+    <ul>
+      <li onmousedown="javascript:this.className='botonSuperiorClicked first';" onmouseup="javascript:this.className='botonSuperior first';"
+            onmouseover="javascript:this.className='botonSuperiorOver first';" onmouseout="javascript:this.className='botonSuperior first';"
+            onclick="javascript:window.location='/catalogo';" class="botonSuperior first" title="Datos"><p class="textoBoton">DATOS</p></li>
+      <li onmousedown="javascript:this.className='botonSuperiorClicked second';" onmouseup="javascript:this.className='botonSuperior second';"
+            onmouseover="javascript:this.className='botonSuperiorOver second';" onmouseout="javascript:this.className='botonSuperior second';"
+            onclick="javascript:window.location='/aragopedia';" class="botonSuperior second" title="AragoPedia"><p class="textoBoton">ARAGOPEDIA</p></li>
+<li class="clear visible-xs tamCero"></li>
+      <li onmousedown="javascript:this.className='botonSuperiorClicked third';" onmouseup="javascript:this.className='botonSuperior third';"
+            onmouseover="javascript:this.className='botonSuperiorOver third';" onmouseout="javascript:this.className='botonSuperior third';"
+            onclick="javascript:window.location='/portal/escucha-activa';" class="botonSuperior third" title="Social data"><p class="textoBoton">SOCIAL DATA</p></li>
+<li class="clear visible-ms tamCero"></li>
+      <li onmousedown="javascript:this.className='botonSuperiorClicked fourth';" onmouseup="javascript:this.className='botonSuperior fourth';"
+            onmouseover="javascript:this.className='botonSuperiorOver fourth';" onmouseout="javascript:this.className='botonSuperior fourth';"
+            onclick="javascript:window.location='/portal/colabora';" class="botonSuperior fourth" title="Colabora"><p class="textoBoton">COLABORA</p></li>
+<li class="clear visible-xs tamCero"></li>
+      <li onmousedown="javascript:this.className='botonSuperiorClicked fifth';" onmouseup="javascript:this.className='botonSuperior fifth';"
+            onmouseover="javascript:this.className='botonSuperiorOver fifth';" onmouseout="javascript:this.className='botonSuperior fifth';" 
+            onclick="javascript:window.location='/portal/aplicaciones';" class="botonSuperior fifth" title="Aplicaciones"><p class="textoBoton">APLICACIONES</p></li>
+      <li onmousedown="javascript:this.className='botonSuperiorClicked last';" onmouseup="javascript:this.className='botonSuperior last';"
+            onmouseover="javascript:this.className='botonSuperiorOver last';" onmouseout="javascript:this.className='botonSuperior last';" 
+            onclick="javascript:window.location='/portal/informacion';" class="botonSuperior last" title="Informaci&oacute;n sobre Open Data"><p class="textoBoton">INFO OPEN DATA</p></li>
+      </ul>
+  </nav>
+</div>
+
+
+<div class="separadorContenidoPagina"></div>
+<div id="contenido">
+<div class="huecoInicioPagina bordesocialdata"></div>
+<div class="huecoInicioPagina"></div>
+<div class="clear"></div>
+<div id="dvLoading"></div>
+<div class="seccionSelect">
+	
+	<div id="serviciosODTitulo">
+		<img src="./public/i/01-TXT-Social-Data.png" alt="Social Data" class="i_i"/>
+		
+        <div class="refrescar">
+		<a href="javascript:onChgChosen1()"><img src = "./public/i/02-ICON-Refrescar.png" alt="Refrescar" title="Refrescar"></a> 
+		</div>
+        <!--<input type="button" name="refescar" value="Refrescar" onClick="montarUrl();" />-->
+	</div>
+<div class="huecoInicioPagina"></div>
+<div>
+		<table>
+			<tr>
+	 		<td class="selectores1">
+	      <label class="etiqueta1" title="QUIERO ESCUCHAR" > <img src="./public/i/02-TXT-Quiero-Escuchar.png" style="vertical-align:middle;" alt="Quiero escuchar"> </label>
+	      <select id="escucharlb" class="select1" name="ESC"   tabindex="15">
+	        <option class="option" value="Toda">Toda la Conversación de Aragón</option>
+	        <!--<option value="Propia">Conversación Propia de Aragón</option>-->
+	        <option class="option" value="Trending">Trending Topics de Aragón</option>
+	        <option disabled>Proximamente más contenido</option>
+	       	</select>
+	      </td>
+		  <td class="selectores2">
+	      <label class="etiqueta2" title="DE"><img src="./public/i/03-TXT-De.png" alt="De">  </label>
+	      <select id="delb"  class="select2" name="de"  tabindex="16" >
+	        <option class="option" value="Todas" selected="selected">Todas las fuentes</option>
+	        <option class="option" value="Microblogging">Microblogging/Blogging</option>
+	        <!--<option value="Blogging">Blogging</option>
+	        <option value="Redes">Redes Sociales</option>-->
+	        <option class="option" value="Wiki">Wiki</option>
+	        <option class="option" value="Eventos">Eventos</option>
+	        <option class="option" value="Video">Vídeo</option>
+	        <option class="option" value="Foto">Foto</option>
+	        <option class="option" value="Lugares">Lugares</option>
+	        <option class="option" value="Desarrolladores">Desarrolladores informáticos</option>
+	        
+	        <!--<option value="Web">Web</option>
+	        <option value="Prensa">Prensa</option>-->
+	       </select>
+	      </td>
+	      <td class="selectores3">
+	      <label class="etiqueta3" title="EN"><img src="./public/i/04-TXT-En.png" alt="En">   </label>
+	      <select id="enlb" class="select3" name="EN"   tabindex="17">
+	        <option class="option" value="Listado" selected="selected">Listado</option>
+	      <!-- <option disabled>Proximamente más contenido</option>-->
+	         <option value="Mapa">Mapa</option>
+	       </select>
+	      </td>
+	    </tr>
+	 </table>
+</div>
+
+
+
+<div id="datawindow"></div>
+<div id="paginator"></div>
+<div id="miMapa"></div>
+	<a href="http://opendata.aragon.es/condiciones-utilizacion-social-data" target="_blank"><div id="datos_terceros" class="datos-terceros"></div></a>
+</div>
+
+</div>
+
+<footer>
+<div id="pie">
+<ul id="pieUL"><li id="pieULLI">
+<div class="pieInterior">
+	<div class="pieZonaUno">
+		<img src="./public/i/footer/textoAOD.png" alt="Arag&oacute;n Open Data" id="pieZonaUnoRoot"/> &gt; HOME
+	</div>
+	<div class="clear"></div>
+	<div class="pieZonaDos">
+		<ul>
+		<li>
+		<table>
+			<tr><td class="titulo"><img src="./public/i/footer/textoAvisoLegal.png" alt="Aviso legal"/></td></tr>
+			<tr><td><a href="/portal/terminos" title="T&eacute;rminos de uso"><img src="./public/i/footer/cajaTerminosUso.jpg" alt="T&eacute;rminos de uso"/></a></td></tr>
+			<tr><td><img src="./public/i/footer/cajaCCconTexto.jpg" alt="Licencia Creative Commons" height="96" width="215"/></td></tr>
+			<tr><td><img src="./public/i/footer/banderaUEconTexto.png" alt="Uni&oacute;n Europea - Fondo Europeo de Desarrollo Regional" class="recuadroPie" /></td></tr>
+		</table>
+		</li>
+<li class="clear visible-xs tamCero"></li>
+		<li>
+		<table>
+			<tr><td class="titulo"><img src="./public/i/footer/textoPoweredBy.png" alt="Powered by"/></td></tr>
+			<tr><td><a href="http://ckan.org/" title="CKAN"><img src="./public/i/footer/cajaLogoCKAN.jpg" alt="CKAN"/></a></td></tr>
+			<tr><td><a href="http://www.wolfcms.org/" title="Wolf CMS"><img src="./public/i/footer/cajaLogoWolfCMS.jpg" alt="Wolf CMS"/></a></td></tr>
+			<tr><td><a href="http://www.mediawiki.org/" title="MediaWiki"><img src="./public/i/footer/cajaLogoMediaWiki.jpg" alt="MediaWiki"/></a></td></tr>
+			<tr><td><a href="http://virtuoso.openlinksw.com/" title="Virtuoso"><img src="./public/i/footer/cajaLogoVirtuoso.jpg" alt="Virtuoso"/></a></td></tr>
+		</table>
+		</li>
+<li class="clear visible-xs tamCero"></li>
+<li class="clear visible-ms tamCero"></li>
+		<li>
+		<table>
+			<tr><td class="titulo"><img src="./public/i/footer/textoAOD.png" alt="Arag&oacute;n Open Data"/></td></tr>
+			<tr><td>
+<div class="pieZonaEnlaces">
+<ul class="styleDiscUL">
+<li><a href="/catalogo" title="Datos" class="pieEnlace">DATOS</a></li>
+<li><a href="/aragopedia" title="AragoPedia" class="pieEnlace">ARAGOPEDIA</a></li>
+<li><a href="/portal/escucha-activa" title="Social Data" class="pieEnlace">SOCIAL DATA</a></li>
+<li><a href="/portal/colabora" title="Colabora" class="pieEnlace">COLABORA</a></li>
+<li><a href="/portal/aplicaciones" title="Aplicaciones" class="pieEnlace">APLICACIONES</a></li>
+<li><a href="/portal/informacion" title="Informaci&oacute;n Open Data" class="pieEnlace">INFO OPEN DATA</a></li>
+</ul>
+</div>
+</td></tr>
+		</table>
+		</li>
+<li class="clear visible-xs tamCero"></li>
+		<li>
+		<table class="last">
+			<tr><td class="titulo"><img src="./public/i/footer/textoRedesSociales.png" alt="Redes Sociales"/></td></tr>
+			<tr><td><a href="http://www.facebook.com/observatorio.aragones" title="Facebook"><img src="./public/i/footer/cajaLogoFacebook.jpg" alt="Facebook"/></a></td></tr>
+			<tr><td><a href="http://www.twitter.com/oasi" title="Twitter"><img src="./public/i/footer/cajaLogoTwitter.jpg" alt="Twitter"/></a></td></tr>
+			<tr><td><a href="http://www.youtube.com/" title="YouTube"><img src="./public/i/footer/cajaLogoYouTube.jpg" alt="YouTube"/></a></td></tr>
+			<tr><td><a href="mailto:opendata@aragon.es" title="Contacto AOD"><img src="./public/i/footer/cajaCorreoAOD.jpg" alt="Contacto AOD"/></a></td></tr>
+		</table>
+		</li>
+		</ul>
+	</div>
+	<div class="clear"></div>
+	<div class="pieZonaTres">
+		<ul>
+			<li class="izquierda textoPie">
+				<p>GOBIERNO DE ARAG&Oacute;N</p>
+				<p>EDIFICIO PIGNATELLI</p>
+				<address>PASEO MAR&iacute;A AGUST&iacute;N, 36 50071 ZARAGOZA TEL. 976 714 000</address>
+			</li>
+			<li class="derecha">
+				<a target="_blank" href="http://www.aragon.es" title="Gobierno de Arag&oacute;n"><img width="132" height="28" alt="Gobierno de Arag&oacute;n" src="./public/i/footer/logo_aragob_pie.png"></a>
+			</li>
+		</ul>
+	</div>
+<div class="clear"></div>
+</div>
+</li></ul>
+</div>
+
+</footer>
+
+</body>
+
+</html>
